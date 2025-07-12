@@ -26,8 +26,8 @@ How to Run
 
 **1. Clone the repository**
 
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/SoAnanya/Cloud-Projects.git
+cd Cloud-Projects
 
 **2. Build the Docker image**
 
