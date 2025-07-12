@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full fade-in">
+        <h1 class="text-3xl font-bold text-indigo-600 mb-4 text-center">Welcome to XYZ University!</h1>
+        <p class="text-gray-600 mb-6 text-center">Sign up to access all important notes & lectures.</p>
+
+        <form action="/addUser" method="POST" target="_blank" id="signupForm" class="space-y-4">
+            <div class="field">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" placeholder="jane@email.com" name="email" 
+                       class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" required>
+            </div>
+            <div class="field">
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" placeholder="Jane Doe" name="username" 
+                       class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" required>
+            </div>
+            <div class="field">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" placeholder="Password" name="password" 
+                       class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" required>
+            </div>
+            <button type="submit" id="formBtn" 
+                    class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 btn-hover">
+                Create Account
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            const email = document.querySelector('input[name="email"]').value;
+            const username = document.querySelector('input[name="username"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            if (!email || !username || !password) {
+                event.preventDefault();
+                alert('Please fill in all fields.');
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                event.preventDefault();
+                alert('Please enter a valid email address.');
+            }
+        });
+    </script>
+</body>
+</html>
